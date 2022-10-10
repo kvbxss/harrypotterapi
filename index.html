@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Vanilla JS HP</title>
+  </head>
+
+
+
+
+  <body>
+    <div id="img-wrap">
+    <img src="./assets/images/harry-potter.png"> </img>
+    </div>
+    
+    <div id="button-div">
+    <button onclick="allStudents()">All Students</button>
+
+    <button onclick="Gryffindor()">Gryffindor</button>
+
+    <button onclick="Slytherin()">Slytherin</button>
+
+    <button onclick="Hufflepuff()">Hufllepuff</button>
+
+    <button onclick="Ravenclaw()">Ravenclaw</button>
+
+    <a href="favorites.html">Favorites</a>
+    </div>
+
+  <br>
+
+  <h1 id="table-header">Characters</h1>
+    <table id="characters">
+      <thead> 
+        <br>
+          <tr>
+            <th data-sort="name">Name</th>
+            <th data-sort="date">Date of Birth</th>
+            <th data-sort="house">House</th>
+            <th>Wizard</th>
+            <th>Ancestry</th>
+            <th>Is Student/Staff</th>
+          </tr>
+      </thead>
+      <tbody id="table-body">
+
+      </tbody>
+  </table>
+
+  <div id="modal">
+
+  </div>
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>
