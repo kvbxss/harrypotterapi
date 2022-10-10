@@ -154,7 +154,7 @@ tr:hover {
     text-align: center;
     background: #fff;
     color: #7F0909;
-    border-bottom: 6px solid #d8cefe;
+    border: 6px solid #7F0909;
 
     @media screen and (max-width: 768px) {
         display: block;

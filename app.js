@@ -194,7 +194,7 @@ fetch("https://hp-api.herokuapp.com/api/characters")
       charactersContainersEl[i].addEventListener('click', (e) => {
           modalEl.style.display = "block";
           const characterHtml = objectData[i];
-          const characterId = e.target.id;
+          const characterId = objectData[i].id;
           modal = ` 
           <div class="card">
           <img class="img-modal" src="${objectData[i].image}">
@@ -212,11 +212,10 @@ fetch("https://hp-api.herokuapp.com/api/characters")
                      <br>
                      <button id="dodajUlub"> Add to Fav </button>
           `
+
           modalEl.innerHTML = modal
-  
-          document.getElementById("dodajUlub").addEventListener('click', e => {
-              console.log(characterHtml)
-              localStorage.setItem(characterId, characterHtml)
+          document.getElementById("dodajUlub").addEventListener('click', () => {
+              addToFav(characterId, characterHtml);
           })
       })
     }
@@ -230,10 +229,51 @@ function closeModal() {
   modalEl.style.display = "none"
 }
 
-function addToFav(charHtml) {
-
-console.log(charHtml)
+function addToFav(id, objectToParse) {
+  console.log(id, objectToParse);
+  localStorage.setItem(id, JSON.stringify(objectToParse));
 }
-getCharacters();
-console.log(JSON.parse(localStorage.getItem(1)))
 
+
+
+let ascendingOrder = true;
+
+function sortCharactersByName(tag) {
+
+  const selector = element => element.querySelector(`${tag}`).innerText;
+
+  console.log(selector);
+
+ 
+  const isNumeric = true;
+
+  const elements = [...document.querySelectorAll(".character-container")];
+  const parentElement = elements[0].parentNode;
+ 
+  const collator = new Intl.Collator(undefined, {
+    numeric: isNumeric,
+    sensitivity: "base",
+  });
+  
+  elements
+    .sort((elementA, elementB) => {
+      const [firstElement, secondElement] = ascendingOrder
+        ? [elementA, elementB]
+        : [elementB, elementA];
+      const textOfFirstElement = selector(firstElement);
+      const textOfSecondElement = selector(secondElement);
+     
+      return collator.compare(textOfFirstElement, textOfSecondElement);
+     
+    })
+    .forEach((element) => parentElement.appendChild(element));
+    if (ascendingOrder) {
+      ascendingOrder = false;
+    }
+    else {
+      ascendingOrder = true;
+    }
+    console.log(ascendingOrder)
+}
+
+getCharacters();
