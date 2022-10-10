@@ -194,7 +194,8 @@ fetch("https://hp-api.herokuapp.com/api/characters")
       charactersContainersEl[i].addEventListener('click', (e) => {
           modalEl.style.display = "block";
           const characterHtml = objectData[i];
-          const characterId = objectData[i].id;
+          const characterId = e.target.parentElement.id;
+          console.log(characterId);
           modal = ` 
           <div class="card">
           <img class="img-modal" src="${objectData[i].image}">
@@ -208,7 +209,7 @@ fetch("https://hp-api.herokuapp.com/api/characters")
       </div>
               
                      <br>
-                     <button id="dodajUlub" onclick=closeModal()>Close</button>
+                     <button id="close" onclick=closeModal()>Close</button>
                      <br>
                      <button id="dodajUlub"> Add to Fav </button>
           `

@@ -6,7 +6,7 @@ let FavCharactersHtml = "";
 
 let array = []
 Object.keys(items).map( (element) =>{
-  array.push( { object: JSON.parse(items[element]), id: element[0]} )
+  array.push( { object: JSON.parse(items[element]), id: element} )
   console.log(array)
 })
 
