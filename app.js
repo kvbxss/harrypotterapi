@@ -12,7 +12,7 @@ fetch("https://hp-api.herokuapp.com/api/characters/students")
   let tableData = "";
   objectData.map((values) => {
     tableData +=`
-    <tr>
+    <tr class="character-container">
     <td id="name">${values.name}</td>
 
     <td id="yearOfBirth">${values.yearOfBirth}</td>
@@ -43,7 +43,7 @@ function Gryffindor() {
     let tableData = "";
     objectData.map((values) => {
       tableData +=`
-      <tr>
+      <tr class="character-container">
       <td id="name">${values.name}</td>
   
       <td id="yearOfBirth">${values.yearOfBirth}</td>
@@ -74,7 +74,7 @@ function Slytherin() {
       let tableData = "";
       objectData.map((values) => {
         tableData +=`
-        <tr>
+        <tr class="character-container" >
         <td id="name">${values.name}</td>
     
         <td id="yearOfBirth">${values.yearOfBirth}</td>
@@ -105,7 +105,7 @@ function Hufflepuff() {
         let tableData = "";
         objectData.map((values) => {
           tableData +=`
-          <tr>
+          <tr class="character-container">
           <td id="name">${values.name}</td>
       
           <td id="yearOfBirth">${values.yearOfBirth}</td>
@@ -136,7 +136,7 @@ function Ravenclaw() {
           let tableData = "";
           objectData.map((values) => {
             tableData +=`
-            <tr>
+            <tr class="character-container">
             <td id="name">${values.name}</td>
         
             <td id="yearOfBirth">${values.yearOfBirth}</td>
@@ -278,3 +278,22 @@ function sortCharactersByName(tag) {
 }
 
 getCharacters();
+
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelectorAll('.nav__link')
+
+navToggle.addEventListener('click', () => {
+    document.body.classList.toggle('nav-open');
+});
+
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        document.body.classList.remove('nav-open');
+    })
+})
+
+
+function openFav () {
+  window.open('./favorites.html', "_self")
+}
+

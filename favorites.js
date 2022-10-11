@@ -13,7 +13,7 @@ Object.keys(items).map( (element) =>{
 function renderFavCharacters() {
   array.map((item) => {
     FavCharactersHtml += `
-    <div class="card">
+    <div class="card-fav">
           ${item.object.image ? `<img class="img-modal" src="${item.object.image}">` : ""}
           <div class="data-modal">
               <h3>${item.object.name}</h3>
@@ -21,8 +21,10 @@ function renderFavCharacters() {
               <p>${item.object.house}</p>
               <br>
               <h4>${item.object.ancestry}</h4>
+              <br>
+              <button id="usunZUlubionychBtn" onclick=deleteFromFav("${item.id}")> Delete </button>
           </div>
-      <button id="usunZUlubionychBtn" onclick=deleteFromFav("${item.id}")> Delete from Fav </button>           
+                 
         </div>`;
   });
   
@@ -39,6 +41,7 @@ function changeAmountOfCards(amount) {
 
 function deleteFromFav(id) {
   localStorage.removeItem(id);
-  location.reload();
+  document.getElementById('fav-container').removeChild(document.getElementById(id))
+  
   return false;
 }

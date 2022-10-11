@@ -17,26 +17,63 @@
     <div id="img-wrap">
     <img src="./assets/images/harry-potter.png"> </img>
     </div>
-    
+
     <div id="button-div">
-    <button onclick="allStudents()">All Students</button>
+      <button onclick="allStudents()">All Students</button>
+  
+      <button onclick="Gryffindor()">Gryffindor</button>
+  
+      <button onclick="Slytherin()">Slytherin</button>
+  
+      <button onclick="Hufflepuff()">Hufllepuff</button>
+  
+      <button onclick="Ravenclaw()">Ravenclaw</button>
+  
+      <button onclick="sortCharactersByName('#name')">Sort by Name</button>
+  
+      <button onclick="sortCharactersByName('#yearOfBirth')">Sort by Date</button>
+  
+      <button onclick="sortCharactersByName('#house')">Sort by House</button>
 
-    <button onclick="Gryffindor()">Gryffindor</button>
+      <button onclick="openFav()">Favorites</button>
+      </div>
 
-    <button onclick="Slytherin()">Slytherin</button>
-
-    <button onclick="Hufflepuff()">Hufllepuff</button>
-
-    <button onclick="Ravenclaw()">Ravenclaw</button>
-
-    <button onclick="sortCharactersByName('#name')">Sort by Name</button>
-
-    <button onclick="sortCharactersByName('#yearOfBirth')">Sort by Date</button>
-
-    <button onclick="sortCharactersByName('#house')">Sort by House</button>
-    <a href="favorites.html">Favorites</a>
-    </div>
-
+      
+    <button class="nav-toggle" aria-label="toggle navigation">
+      <span class="hamburger"></span>
+  </button>
+  
+  <nav class="nav">
+      <ul class="nav__list">
+        <li class="nav__item">
+    <button id="nav--link" onclick="allStudents()">All Students</button>
+  </li>
+  <li class="nav__item"> 
+    <button id="nav--link" onclick="Gryffindor()">Gryffindor</button>
+  </li>
+    <li class="nav__item">
+    <button id="nav--link" onclick="Slytherin()">Slytherin</button>
+  </li>
+  <li class="nav__item">
+    <button id="nav--link" onclick="Hufflepuff()">Hufllepuff</button>
+  </li>
+    <li class="nav__item">
+    <button id="nav--link" onclick="Ravenclaw()">Ravenclaw</button>
+  </li>
+  <li class="nav__item">
+    <button id="nav--link" onclick="sortCharactersByName('#name')">Sort by Name</button>
+  </li>
+  <li class="nav__item">
+    <button id="nav--link" onclick="sortCharactersByName('#yearOfBirth')">Sort by Date</button>
+  </li>
+  <li class="nav__item">
+    <button id="nav--link" onclick="sortCharactersByName('#house')">Sort by House</button>
+  </li>
+  <li class="nav__item">
+    <button id="nav--link" onclick="openFav()">Favorites</a>
+  </li>
+  </ul>
+    </nav>
   <br>
 
   <h1 id="table-header">Characters</h1>
