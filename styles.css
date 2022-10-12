@@ -84,8 +84,32 @@ button, a {
     
 }
 
+#close{
+  border-radius: 10px;
+  background: #fff;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: 0.3s;
+  padding: 10px 25px;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  transition: all 0.2 ease-in-out;
+  cursor: pointer;
+  margin-left: 5px;
+  font-family: inherit;
+  font-size: 1em;
+
+  
+}
+
 #dodajUlub:hover{
     transform: translateY(-2px);
+}
+
+#close:hover{
+  transform: translateY(-2px);
 }
 
 button:hover{
@@ -186,7 +210,7 @@ header {
 
 .nav {
   position: fixed;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.9);
   color: #fff;
   top: 0;
   bottom: 0;
@@ -338,6 +362,10 @@ h3, h4{
   }
 
   #dodajUlub{
+    padding: 10px 15px;
+  }
+
+  #close{
     padding: 10px 15px;
   }
 

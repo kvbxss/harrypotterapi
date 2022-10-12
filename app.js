@@ -1,15 +1,17 @@
+const charactersEl = document.getElementById("characters"); 
+let modal=""
+const modalEl = document.getElementById("modal")
 
 
+async function allStudents() {
 
-function allStudents() {
-
-fetch("https://hp-api.herokuapp.com/api/characters/students")
-.then((data) => {
-  return data.json();
-})
-.then((objectData) => {
-  console.log(objectData);
   let tableData = "";
+  let objectData;
+
+const res = await fetch("https://hp-api.herokuapp.com/api/characters/students");
+objectData = await res.json();
+  
+
   objectData.map((values) => {
     tableData +=`
     <tr class="character-container">
@@ -27,148 +29,62 @@ fetch("https://hp-api.herokuapp.com/api/characters/students")
     </tr>`;
   });
   document.getElementById("table-body").innerHTML = tableData;
-})
-.catch((error) => console.log(error));
+  modalEl.style.display = "none";
+    
+    const charactersContainersEl = document.getElementsByClassName("character-container")
+    for(let i = 0; i < charactersContainersEl.length; i++) {
+      charactersContainersEl[i].addEventListener('click', (e) => {
+          modalEl.style.display = "block";
+          const characterHtml = objectData[i];
+          const characterId = e.target.parentElement.id;
+          console.log(characterId);
+          modal = ` 
+          <div class="card">
+          <img class="img-modal" src="${objectData[i].image}">
+          <div class="data-modal">
+              <h3>${objectData[i].name}</h3>
+              <br>
+              <p>${objectData[i].house}</p>
+              <br>
+              <h4>${objectData[i].ancestry}</h4>
+          </div>
+      </div>
+              
+                     <br>
+                     <button id="close" onclick=closeModal()>Close</button>
+                     <br>
+                     <button id="dodajUlub"> Add to Fav </button>
+          `
 
-}
-
-function Gryffindor() {
-
-  fetch("https://hp-api.herokuapp.com/api/characters/house/gryffindor")
-  .then((data) => {
-    return data.json();
-  })
-  .then((objectData) => {
-    console.log(objectData);
-    let tableData = "";
-    objectData.map((values) => {
-      tableData +=`
-      <tr class="character-container">
-      <td id="name">${values.name}</td>
-  
-      <td id="yearOfBirth">${values.yearOfBirth}</td>
-  
-      <td id="house">${values.house}</td>
-  
-      <td id="wizard">${values.wizard}</td>
-  
-      <td id="ancestry">${values.ancestry}</td>
-  
-      <td id="is-stud-staff">${values.hogwartsStudent}</td>
-      </tr>`;
-    });
-    document.getElementById("table-body").innerHTML = tableData;
-  })
-  .catch((error) => console.log(error));
-  
+          modalEl.innerHTML = modal
+          document.getElementById("dodajUlub").addEventListener('click', () => {
+              addToFav(characterId, characterHtml);
+          })
+      })
+    }
   }
 
-function Slytherin() {
 
-    fetch("https://hp-api.herokuapp.com/api/characters/house/slytherin")
-    .then((data) => {
-      return data.json();
-    })
-    .then((objectData) => {
-      console.log(objectData);
-      let tableData = "";
-      objectData.map((values) => {
-        tableData +=`
-        <tr class="character-container" >
-        <td id="name">${values.name}</td>
+
+
+
+
+
+async function getCharacters(house){
+
+  let tableData = "";
+  let objectData;
+  if(!house) { 
+    const res = await fetch("https://hp-api.herokuapp.com/api/characters")
+    objectData = await res.json();
     
-        <td id="yearOfBirth">${values.yearOfBirth}</td>
+  } else if(house){
+    const res =  await fetch(`https://hp-api.herokuapp.com/api/characters/house/${house}`)
+    objectData = await res.json();
     
-        <td id="house">${values.house}</td>
-    
-        <td id="wizard">${values.wizard}</td>
-    
-        <td id="ancestry">${values.ancestry}</td>
-    
-        <td id="is-stud-staff">${values.hogwartsStudent}</td>
-        </tr>`;
-      });
-      document.getElementById("table-body").innerHTML = tableData;
-    })
-    .catch((error) => console.log(error));
-    
-    }
-
-function Hufflepuff() {
-
-      fetch("https://hp-api.herokuapp.com/api/characters/house/hufflepuff")
-      .then((data) => {
-        return data.json();
-      })
-      .then((objectData) => {
-        console.log(objectData);
-        let tableData = "";
-        objectData.map((values) => {
-          tableData +=`
-          <tr class="character-container">
-          <td id="name">${values.name}</td>
-      
-          <td id="yearOfBirth">${values.yearOfBirth}</td>
-      
-          <td id="house">${values.house}</td>
-      
-          <td id="wizard">${values.wizard}</td>
-      
-          <td id="ancestry">${values.ancestry}</td>
-      
-          <td id="is-stud-staff">${values.hogwartsStudent}</td>
-          </tr>`;
-        });
-        document.getElementById("table-body").innerHTML = tableData;
-      })
-      .catch((error) => console.log(error));
-      
-      }
-
-function Ravenclaw() {
-
-        fetch("https://hp-api.herokuapp.com/api/characters/house/ravenclaw")
-        .then((data) => {
-          return data.json();
-        })
-        .then((objectData) => {
-          console.log(objectData);
-          let tableData = "";
-          objectData.map((values) => {
-            tableData +=`
-            <tr class="character-container">
-            <td id="name">${values.name}</td>
-        
-            <td id="yearOfBirth">${values.yearOfBirth}</td>
-        
-            <td id="house">${values.house}</td>
-        
-            <td id="wizard">${values.wizard}</td>
-        
-            <td id="ancestry">${values.ancestry}</td>
-        
-            <td id="is-stud-staff">${values.hogwartsStudent}</td>
-            </tr>`;
-          });
-          document.getElementById("table-body").innerHTML = tableData;
-        })
-        .catch((error) => console.log(error));
-        
-        }
+  }
 
 
-const charactersEl = document.getElementById("characters"); 
-let modal=""
-const modalEl = document.getElementById("modal")
-
-function getCharacters(){
-fetch("https://hp-api.herokuapp.com/api/characters")
-  .then((data) => {
-    return data.json();
-  })
-  .then((objectData) => {
-    console.log(objectData);
-    let tableData = "";
     objectData.map((values, index) => {
       tableData +=`
       <tr class="character-container" id=${index}>
@@ -220,12 +136,8 @@ fetch("https://hp-api.herokuapp.com/api/characters")
           })
       })
     }
-  })
-  .catch((error) => console.log(error));
-
- 
-
   }
+
 function closeModal() {
   modalEl.style.display = "none"
 }
