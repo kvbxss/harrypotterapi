@@ -389,4 +389,42 @@ width: 200px;
     display: flex;
     flex-direction: column;
   }
+
+  #characters{
+    width: 40%;
+  }
+
+  #modal {
+    position: fixed;
+    height: 60vh;
+
+    top: 50px;
+    left: 20px;
+
+    width: 400px;
+    background: #ECB732;
+}
+
+.card {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  background: #fff;
+  color: #7F0909;
+  border: 6px solid #7F0909;
+
+ 
+}
+}
+
+@media screen and (max-width:490px) {
+
+  body{
+    overflow-x: scroll;
+  }
+
 }
