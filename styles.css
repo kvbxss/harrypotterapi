@@ -338,9 +338,9 @@ border-radius: 0;
 }
 
 .owl{
-position: absolute;
+position: fixed;
 top: 0;
-right: 20;
+right: 20px;
 width: 200px;
 }
 
